@@ -1,0 +1,224 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id             String         @id @default(cuid())
+  name           String?
+  email          String?        @unique
+  emailVerified  DateTime?
+  image          String?
+  password       String?
+  role           UserRole       @default(CUSTOMER)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  accounts       Account[]
+  sessions       Session[]
+  properties     Property[]
+  reviews        Review[]
+  devices        UserDevice[]
+  failedAttempts Int            @default(0)
+  lockedUntil    DateTime?
+  customerProfile CustomerProfile?
+  agentProfile    AgentProfile?
+}
+
+enum UserRole {
+  ADMIN
+  AGENT
+  CUSTOMER
+}
+
+model UserDevice {
+  id            String   @id @default(cuid())
+  userId        String
+  deviceId      String
+  deviceName    String
+  lastActive    DateTime @default(now())
+  ipAddress     String?
+  isActive      Boolean  @default(true)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, deviceId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model PasswordReset {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expires   DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email])
+}
+
+model Property {
+  id               String    @id @default(cuid())
+  title            String
+  description      String    @db.Text
+  price            Decimal   @db.Decimal(10, 2)
+  address          String
+  city             String
+  state            String?
+  zipCode          String
+  country          String
+  propertyType     String
+  bedrooms         Int
+  bathrooms        Int
+  area             Float
+  featured         Boolean   @default(false)
+  status           PropertyStatus @default(ACTIVE)
+  ownerId          String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  
+  owner            User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  images           PropertyImage[]
+  reviews          Review[]
+  
+  @@index([propertyType])
+  @@index([city])
+  @@index([status])
+  @@index([featured])
+}
+
+enum PropertyStatus {
+  ACTIVE
+  PENDING
+  SOLD
+  RENTED
+  INACTIVE
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  url        String
+  propertyId String
+  isPrimary  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}
+
+model AgentProfile {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  bio            String?  @db.Text
+  specialty      String?
+  yearsExperience Int?
+  rating         Float?   @default(0)
+  commissionRate Float?   
+  phoneNumber    String?
+  licenseNumber  String?
+  officeAddress  String?
+  
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions   Transaction[]
+  
+  @@index([specialty])
+  @@index([rating])
+}
+
+model CustomerProfile {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  phoneNumber  String?
+  preferences  Json?
+  budget       Decimal? @db.Decimal(10, 2)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  
+  @@index([budget])
+}
+
+model Transaction {
+  id            String   @id @default(cuid())
+  propertyId    String
+  customerId    String
+  agentId       String
+  amount        Decimal  @db.Decimal(10, 2)
+  status        TransactionStatus
+  type          TransactionType
+  date          DateTime @default(now())
+  
+  customer      CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  agent         AgentProfile    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  
+  @@index([status])
+  @@index([type])
+  @@index([date])
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+  REFUNDED
+}
+
+enum TransactionType {
+  PURCHASE
+  RENT
+  DEPOSIT
+  COMMISSION
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  propertyId String
+  userId     String
+  rating     Int
+  comment    String?  @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([propertyId, userId])
+  @@index([rating])
+}

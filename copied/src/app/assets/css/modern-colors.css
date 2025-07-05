@@ -1,0 +1,349 @@
+:root {
+  /* Primary Colors */
+  --primary-color: #4A6FA5;      /* Blue slate */
+  --primary-light: #6A8CBF;      /* Light blue slate */
+  --primary-dark: #2D4A6E;       /* Dark blue slate */
+
+  /* Secondary Colors */
+  --secondary-color: #E9B872;    /* Warm gold */
+  --secondary-light: #F0C893;    /* Light gold */
+  --secondary-dark: #C99A5B;     /* Dark gold */
+
+  /* Accent Colors */
+  --accent-color: #5D8A66;       /* Forest green */
+  --accent-light: #7BA884;       /* Light forest green */
+  --accent-dark: #3F6246;        /* Dark forest green */
+
+  /* Neutral Colors */
+  --neutral-100: #F8F9FA;        /* Very light gray */
+  --neutral-200: #E9ECEF;        /* Light gray */
+  --neutral-300: #DEE2E6;        /* Gray */
+  --neutral-400: #CED4DA;        /* Medium gray */
+  --neutral-500: #ADB5BD;        /* Medium-dark gray */
+  --neutral-600: #6C757D;        /* Dark gray */
+  --neutral-700: #495057;        /* Very dark gray */
+  --neutral-800: #343A40;        /* Almost black */
+  --neutral-900: #212529;        /* Black */
+
+  /* Success, Warning, Error Colors */
+  --success-color: #5D8A66;      /* Green */
+  --warning-color: #E9B872;      /* Gold */
+  --error-color: #D35F5F;        /* Red */
+
+  /* Background Colors */
+  --bg-light: #F8F9FA;           /* Light background */
+  --bg-dark: #212529;            /* Dark background */
+  --bg-primary: #EDF2F9;         /* Primary background */
+  --bg-secondary: #F7F2EB;       /* Secondary background */
+
+  /* Text Colors */
+  --text-light: #F8F9FA;         /* Light text */
+  --text-dark: #212529;          /* Dark text */
+  --text-muted: #6C757D;         /* Muted text */
+
+  /* Shadow */
+  --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+  --shadow-md: 0 .5rem 1rem rgba(0,0,0,.15);
+  --shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
+
+  /* Border Radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 2rem;
+  --border-radius-pill: 50rem;
+  --border-radius-circle: 50%;
+}
+
+/* Modern Button Styles */
+.btn-modern-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-modern-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-modern-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-modern-secondary:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-modern-accent {
+  background-color: var(--accent-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-modern-accent:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Modern Card Styles */
+.card-modern {
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.card-modern:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Modern Section Styles */
+.section-modern {
+  padding: 5rem 0;
+}
+
+.section-modern-alt {
+  padding: 5rem 0;
+  background-color: var(--bg-light);
+}
+
+/* Modern Heading Styles */
+.heading-modern {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.heading-modern h2 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: 'Jost', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.heading-modern h2::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+.heading-modern p {
+  color: #000000;
+  font-size: 1.1rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+}
+
+.heading-modern::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 5rem;
+  height: 0.25rem;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: var(--border-radius-pill);
+}
+
+.heading-modern.text-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Modern Form Controls */
+.form-control-modern {
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--neutral-300);
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control-modern:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+/* Modern Badge */
+.badge-modern {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-pill);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+.badge-modern-primary {
+  background-color: var(--primary-light);
+  color: var(--text-light);
+}
+
+.badge-modern-secondary {
+  background-color: var(--secondary-light);
+  color: var(--text-light);
+}
+
+.badge-modern-accent {
+  background-color: var(--accent-light);
+  color: var(--text-light);
+}
+
+/* Additional Gradient Heading Styles */
+.heading-gradient-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: 'Jost', sans-serif;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.heading-gradient-primary::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+.heading-gradient-secondary {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: 'Jost', sans-serif;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.heading-gradient-secondary::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+.heading-gradient-accent {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: 'Jost', sans-serif;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.heading-gradient-accent::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+.heading-gradient-mixed {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: 'Jost', sans-serif;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.heading-gradient-mixed::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+.subheading-modern {
+  color: #000000;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}

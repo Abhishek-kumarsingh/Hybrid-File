@@ -1,0 +1,96 @@
+/* Multiplication Logo Styles */
+.multiplication-logo {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.multiplication-logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Menu icon container styles */
+.menu-icon-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-icon-container .menu-icon {
+  z-index: 1;
+  position: relative;
+}
+
+.menu-icon-container .section-logo {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  transform: scale(0.6);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.menu-icon-container:hover .section-logo {
+  transform: scale(0.7);
+  opacity: 1;
+}
+
+/* Section-specific logo styles */
+.section-logo.section-dashboard {
+  background-color: rgba(0, 201, 192, 0.9);
+}
+
+.section-logo.section-email {
+  background-color: rgba(255, 90, 61, 0.9);
+}
+
+.section-logo.section-chat {
+  background-color: rgba(103, 58, 183, 0.9);
+}
+
+.section-logo.section-calendar {
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+.section-logo.section-kanban {
+  background-color: rgba(255, 193, 7, 0.9);
+}
+
+.section-logo.section-invoice {
+  background-color: rgba(76, 175, 80, 0.9);
+}
+
+.section-logo.section-ai {
+  background-color: rgba(233, 30, 99, 0.9);
+}
+
+/* Dark theme adjustments */
+.dark-theme .multiplication-logo {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .menu-icon-container .section-logo {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .menu-icon-container .section-logo {
+    display: none;
+  }
+}
+
+/* Animation for random expressions */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.multiplication-logo:not([expression]) {
+  animation: pulse 2s infinite;
+}

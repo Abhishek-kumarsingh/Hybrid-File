@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Skribrie Logo Generator</title>
+  <style>
+    body { margin: 0; padding: 0; background: transparent; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <canvas id="logoCanvas" width="200" height="60"></canvas>
+  
+  <script>
+    // Get the canvas element and its context
+    const canvas = document.getElementById('logoCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Draw the logo background
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 200, 60);
+    
+    // Draw the main logo shape
+    ctx.fillStyle = '#00c9c0';
+    roundedRect(ctx, 10, 15, 40, 30, 6);
+    
+    // Draw the accent shape
+    ctx.fillStyle = '#ff5a3d';
+    ctx.beginPath();
+    ctx.moveTo(20, 25);
+    ctx.lineTo(35, 25);
+    ctx.lineTo(40, 35);
+    ctx.lineTo(25, 35);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Draw the circle
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(25, 20, 3, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Draw the text
+    ctx.fillStyle = '#37474f';
+    ctx.font = 'bold 24px Arial, sans-serif';
+    ctx.fillText('SKRIBRIE', 60, 35);
+    
+    ctx.fillStyle = '#546e7a';
+    ctx.font = '10px Arial, sans-serif';
+    ctx.fillText('E-COMMERCE SOLUTIONS', 60, 45);
+    
+    // Helper function for drawing rounded rectangles
+    function roundedRect(context, x, y, width, height, radius) {
+      context.beginPath();
+      context.moveTo(x + radius, y);
+      context.lineTo(x + width - radius, y);
+      context.quadraticCurveTo(x + width, y, x + width, y + radius);
+      context.lineTo(x + width, y + height - radius);
+      context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      context.lineTo(x + radius, y + height);
+      context.quadraticCurveTo(x, y + height, x, y + height - radius);
+      context.lineTo(x, y + radius);
+      context.quadraticCurveTo(x, y, x + radius, y);
+      context.closePath();
+      context.fill();
+    }
+    
+    // Save the canvas as an image
+    const dataURL = canvas.toDataURL('image/png');
+    console.log(dataURL);
+  </script>
+</body>
+</html>

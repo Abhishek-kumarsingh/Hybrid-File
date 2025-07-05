@@ -1,0 +1,31 @@
+.hero-slideshow {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease, transform 6s ease-out;
+  background-size: cover;
+  background-position: center center;
+  will-change: transform, opacity;
+}
+
+.slide-item.active {
+  opacity: 1;
+}
+
+.slide-item.active.zooming {
+  transform: scale(1.1);
+}
+
+.slide-item.active.zooming-out {
+  transform: scale(1);
+}

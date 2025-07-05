@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-white font-montserrat overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 md:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+  
+  .section {
+    @apply py-12 md:py-20;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-semibold transition-all duration-300 relative overflow-hidden;
+  }
+
+  .btn-primary {
+    @apply bg-neon-blue text-black hover:bg-opacity-80;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-neon-blue text-neon-blue hover:bg-neon-blue hover:bg-opacity-10;
+  }
+
+  .card {
+    @apply bg-dark-gray rounded-xl overflow-hidden;
+  }
+
+  .card-glass {
+    @apply bg-black bg-opacity-40 backdrop-blur-md border border-light-gray rounded-xl;
+  }
+
+  .neon-border {
+    @apply border-2 border-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.5)];
+  }
+
+  .neon-border-green {
+    @apply border-2 border-neon-green shadow-[0_0_10px_rgba(57,255,20,0.5)];
+  }
+
+  .neon-border-red {
+    @apply border-2 border-neon-red shadow-[0_0_10px_rgba(255,49,49,0.5)];
+  }
+
+  .neon-text {
+    @apply text-neon-blue;
+  }
+
+  .neon-text-green {
+    @apply text-neon-green;
+  }
+
+  .neon-text-red {
+    @apply text-neon-red;
+  }
+
+  .progress-bar {
+    @apply h-2 bg-medium-gray rounded-full overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-neon-blue;
+  }
+
+  .progress-bar-fill-green {
+    @apply h-full bg-neon-green;
+  }
+
+  .progress-bar-fill-red {
+    @apply h-full bg-neon-red;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-gray;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-medium-gray rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-light-gray;
+}
+
+/* Animate on Scroll custom animations */
+[data-aos="neon-fade-up"] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition-property: transform, opacity;
+}
+
+[data-aos="neon-fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos="neon-glow"] {
+  text-shadow: none;
+  transition-property: text-shadow;
+}
+
+[data-aos="neon-glow"].aos-animate {
+  text-shadow: 0 0 5px rgba(0,255,255,0.5), 0 0 15px rgba(0,255,255,0.5);
+}

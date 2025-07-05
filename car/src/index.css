@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-secondary-900 text-white font-body;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl leading-tight md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl leading-tight md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl leading-tight md:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl leading-snug md:text-2xl;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500/10;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-500 text-secondary-900 font-bold hover:bg-accent-400 active:bg-accent-600;
+  }
+  
+  .glass-card {
+    @apply bg-secondary-800/40 backdrop-blur-md border border-secondary-700/50 rounded-xl;
+  }
+  
+  .glass-nav {
+    @apply bg-secondary-900/80 backdrop-blur-md;
+  }
+  
+  .grid-bg {
+    @apply bg-secondary-900 bg-grid-pattern bg-[length:40px_40px];
+  }
+  
+  .highlighted-feature {
+    @apply p-6 rounded-xl transition-all duration-300 hover:shadow-neon;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .container-padding {
+    @apply px-4 md:px-8;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-400;
+}
+
+/* AOS overrides */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* Ensure canvas takes full size */
+canvas {
+  outline: none;
+}

@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.neon.pink') theme('colors.dark.700');
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: theme('colors.dark.700');
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: theme('colors.neon.pink');
+  border-radius: 6px;
+}
+
+@layer components {
+  .neon-border {
+    @apply relative border border-transparent;
+  }
+  
+  .neon-border::before {
+    content: '';
+    @apply absolute inset-0 -z-10 bg-gradient-to-r from-neon-pink via-neon-purple to-neon-teal opacity-70 blur-sm transition-all duration-300;
+  }
+  
+  .neon-border:hover::before {
+    @apply opacity-100 blur-md;
+  }
+
+  .glass-card {
+    @apply bg-dark-800/40 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+  
+  .neon-button {
+    @apply relative px-6 py-2 bg-dark-800 text-white overflow-hidden transition-all duration-300 
+    hover:shadow-[0_0_10px_rgba(255,0,255,0.7),0_0_20px_rgba(255,0,255,0.4)] 
+    focus:outline-none focus:ring-2 focus:ring-neon-pink/50;
+  }
+  
+  .neon-button::before {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-neon-pink via-neon-purple to-neon-teal;
+  }
+  
+  .neon-button:hover::before {
+    @apply h-full opacity-20 transition-all duration-300;
+  }
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px theme('colors.white');
+  color: transparent;
+}
+
+.parallax {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.parallax-layer {
+  transform: translateZ(0);
+  transition: transform 0.2s;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(18, 18, 18, 0.9) 0%, rgba(38, 38, 38, 0.8) 100%);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
